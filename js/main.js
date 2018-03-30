@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     })
 
-
     // lookup the container we want the Grid to use
     var eGridDiv = document.querySelector('#myGrid');
 
