@@ -1,0 +1,37 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <script src="https://unpkg.com/ag-grid/dist/ag-grid.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <div id="details" v-for="(value, key) in details" style="margin-bottom: 10px">
+                {{ key.charAt(0).toUpperCase() + key.slice(1) }} :
+                <select class="detailsDropdown" style="width:200px">
+                    <option v-for="item in value" value="volvo">{{item}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="myGrid" style="height: 115px;width:500px" class="ag-theme-balham"></div>
+
+    </body>
+</html>
