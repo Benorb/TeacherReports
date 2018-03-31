@@ -17,8 +17,8 @@
         <script src="https://unpkg.com/ag-grid/dist/ag-grid.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="js/main.js"></script>
         <script src="js/api.js"></script>
+        <script src="js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     </head>
 
@@ -28,9 +28,12 @@
             <h3>Teacher Report</h3>
             <div id="details" v-for="(value, key) in details" style="margin-bottom: 10px">
                 {{ key.charAt(0).toUpperCase() + key.slice(1) }} :
-                <select class="detailsDropdown" style="width:200px">
-                    <option v-for="item in value" value="volvo">{{item}}</option>
+                <select onchange="onChange()" class="detailsDropdown" style="width:200px">
+                    <option v-for="item in value" value={item}>{{item}}</option>
                 </select>
+
+                <button v-on:click="chooseClicked">Choose</button>
+
             </div>
         </div>
 
