@@ -31,11 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
         el: '#app',
         data: {
             details: {
-                // teacherName: 'Avi Sasson',
+                teacher: ['Avi Sasson', 'Daniel Cohen'],
                 course: ['Biology', 'Sport'],
                 activity: ['Running', 'Testing'],
                 task: ['Exam', 'Work'],
-                report: ['Report 1', 'Report2']
+                report: ['Correctness report', 'Correctness characteristics report', 'Student work characteristics report']
             }
         }
     })
