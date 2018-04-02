@@ -71,11 +71,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     // create the grid passing in the div to use together with the columns & data we want to use
     new agGrid.Grid(eGridDiv, gridOptions);
 
+    const a = await _api('teachers/2/courses', null)
+    console.log('a',a)
 
-    const teachers = await _api.getTeachers();
-    const reports = await _api.getReports();
-    vm.details.teacher = teachers;
-    vm.details.report = reports;
+    // const teachers = await _api.getTeachers();
+    // const reports = await _api.getReports();
+    // vm.details.teacher = teachers;
+    // vm.details.report = reports;
 
 
 });
