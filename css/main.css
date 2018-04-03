@@ -297,6 +297,10 @@ textarea {
     margin-right:15px;
 }
 
+.params{
+    width:30%;
+}
+
 .selectRow{
     margin-bottom:10px;
 }
