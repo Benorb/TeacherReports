@@ -3,41 +3,98 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title></title>
+        <title>Teacher Report</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="manifest" href="site.webmanifest">
         <link rel="apple-touch-icon" href="icon.png">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
 
         <script src="https://unpkg.com/ag-grid/dist/ag-grid.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>-->
-        <script src="js/api.js"></script>
-        <script src="js/main.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="js/api.js"></script>
     </head>
 
     <body>
-        <div id="app">
 
-            <h3>Teacher Report</h3>
-            <div id="details" style="margin-bottom: 10px">
-                {{ key.charAt(0).toUpperCase() + key.slice(1) }} :
-                <select class="detailsDropdown" style="width:200px">
-                    <option v-for="item in value" value={item}>{{item}}</option>
-                </select>
-                <!--<button v-on:click="chooseClicked">Choose</button>-->
+    <div class="selectRow">
+        <span class="headline">Teacher Report</span>
+        <select id="reportSelect" class="select"  onchange="selectChange(this)">
+            <option value="correctness" selected>Correctness</option>
+            <option value="correctness_characteristics">Correctness characteristics</option>
+            <option value="student_work_characteristics">Student work characteristics</option>
+        </select>
+    </div>
 
-            </div>
-        </div>
+    <table style="width:30%">
+        <tr>
+            <td>
+                <div class="selectText separate">
+                    Teacher:
+                </div>
+                <div class="selectText separate">
+                    Course:
+                </div>
+                <div class="selectText separate">
+                    Activity:
+                </div>
+                <div class="selectText separate">
+                    Stage:
+                </div>
+            </td>
+            <td>
+                <div class="selectText separate">Arik</div>
+                <div class="separate">
+                    <select
+                        id="coursesSelect"
+                        class="dynamicSelect select"
+                        onchange="selectChange(this)"
+                    >
+                    </select>
+                </div>
+                <div class="separate">
+                    <select
+                        disabled
+                        id="activitySelect"
+                        class="dynamicSelect select"
+                        onchange="selectChange(this)"
+                    >
+                    </select>
+                </div>
+                <div class="separate">
+                    <select
+                        disabled
+                        id="stageSelect"
+                        class="dynamicSelect select"
+                        onchange="selectChange(this)"
+                    >
+                    </select>
+                </div>
 
-        <div id="myGrid" style="height: 115px;width:500px" class="ag-theme-balham"></div>
+            </td>
+        </tr>
+    </table>
+
+    <button
+        id="submit"
+        class="submitButton disabled"
+        onclick="submit()"
+        disabled
+    >
+        Submit
+    </button>
+
+    <div id="error">
+        *There is no data for this parameters
+    </div>
+
+    <div id="myGrid" class="ag-theme-balham"></div>
 
     </body>
 </html>
