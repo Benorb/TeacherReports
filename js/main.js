@@ -3,13 +3,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const getCourseActivities = window.getCourseActivities;
     const getActivityStages = window.getActivityStages;
     const getReport = window.getReport;
+    var localStorage = window.localStorage;
 
     setSelect2();
-
-    const queryParams = getUrlVars();
-    console.log(queryParams);
-    const teacherId = 2; //TODO: get from url
-
     var gridOptions = {
         columnDefs: [],
         rowData: [],
@@ -17,6 +13,10 @@ document.addEventListener("DOMContentLoaded", async () => {
             params.api.sizeColumnsToFit();
         }
     };
+
+    var teacherId = getTeacherId();
+    $('#teacher').html(teacherId);
+    
     initiallizeGrid(gridOptions);
 
     fillData(getTeacherCourses, 'coursesSelect', teacherId, 'Select Course');
@@ -78,6 +78,18 @@ document.addEventListener("DOMContentLoaded", async () => {
             $('#error').css('visibility', 'visible');
         }
         fillTable(data)
+    }
+
+    function getTeacherId() {
+        const queryParams = getUrlVars();
+        console.log('queryParams', queryParams);
+        var teacherId = parseInt(queryParams['t'])
+        if(teacherId){
+            localStorage.setItem('teacherId', teacherId);
+            return teacherId;
+        } else {
+            return parseInt(localStorage.getItem('teacherId'))
+        }
     }
 
     function initiallizeGrid(gridOptions){
